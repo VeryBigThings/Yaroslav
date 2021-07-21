@@ -1,6 +1,6 @@
 {application,phoenix_live_view,
-             [{applications,[kernel,stdlib,elixir,logger,phoenix,phoenix_html,
-                             telemetry]},
+             [{applications,[kernel,stdlib,elixir,logger,telemetry,
+                             phoenix_html,phoenix]},
               {description,"Rich, real-time user experiences with server-rendered HTML\n"},
               {modules,['Elixir.Inspect.Phoenix.LiveView.Socket',
                         'Elixir.Inspect.Phoenix.LiveView.Socket.AssignsNotInSocket',

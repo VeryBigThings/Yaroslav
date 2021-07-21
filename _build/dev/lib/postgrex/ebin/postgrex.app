@@ -1,6 +1,6 @@
 {application,postgrex,
-             [{applications,[kernel,stdlib,elixir,logger,crypto,decimal,
-                             db_connection,connection]},
+             [{applications,[kernel,stdlib,elixir,logger,crypto,connection,
+                             decimal,db_connection]},
               {description,"PostgreSQL driver for Elixir"},
               {modules,['Elixir.Collectable.Postgrex.Stream',
                         'Elixir.DBConnection.Query.Postgrex.Copy',
