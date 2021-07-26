@@ -2,38 +2,131 @@
   <h1><%= gettext "Welcome to %{name}!", name: "Phoenix" %></h1>
   <p>Peace of mind from prototype to production</p>
   <h2 class="yarr">Yaroslav</h2>
+  <p>add</p>
 </section>
 
-<section class="row">
-  <article class="column">
-    <h2>Resources</h2>
-    <ul>
-      <li>
-        <a href="https://hexdocs.pm/phoenix/overview.html">Guides &amp; Docs</a>
-      </li>
-      <li>
-        <a href="https://github.com/phoenixframework/phoenix">Source</a>
-      </li>
-      <li>
-        <a href="https://github.com/phoenixframework/phoenix/blob/v1.5/CHANGELOG.md">v1.5 Changelog</a>
-      </li>
-    </ul>
-  </article>
-  <article class="column">
-    <h2>Help</h2>
-    <ul>
-      <li>
-        <a href="https://elixirforum.com/c/phoenix-forum">Forum</a>
-      </li>
-      <li>
-        <a href="https://webchat.freenode.net/?channels=elixir-lang">#elixir-lang on Freenode IRC</a>
-      </li>
-      <li>
-        <a href="https://twitter.com/elixirphoenix">Twitter @elixirphoenix</a>
-      </li>
-      <li>
-        <a href="https://elixir-slackin.herokuapp.com/">Elixir on Slack</a>
-      </li>
-    </ul>
-  </article>
+<section class="row lg:text-center">
+  <div class="py-12 bg-white container">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="lg:text-center">
+      <h2 class="text-base text-indigo-600 font-semibold tracking-wide uppercase">Transactions</h2>
+      <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+        A better way to send money
+      </p>
+      <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
+        Lorem ipsum dolor sit amet consect adipisicing elit. Possimus magnam voluptatum cupiditate veritatis in accusamus quisquam.
+      </p>
+    </div>
+
+    <div class="mt-10">
+      <dl class="space-y-10 md:space-y-0 md:grid md:grid-cols-2 md:gap-x-8 md:gap-y-10">
+        <div class="relative">
+          <dt>
+            <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
+              <!-- Heroicon name: outline/globe-alt -->
+              <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+              </svg>
+            </div>
+            <p class="ml-16 text-lg leading-6 font-medium text-gray-900">Competitive exchange rates</p>
+          </dt>
+          <dd class="mt-2 ml-16 text-base text-gray-500">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.
+          </dd>
+        </div>
+
+        <div class="relative">
+          <dt>
+            <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
+              <!-- Heroicon name: outline/scale -->
+              <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" />
+              </svg>
+            </div>
+            <p class="ml-16 text-lg leading-6 font-medium text-gray-900">No hidden fees</p>
+          </dt>
+          <dd class="mt-2 ml-16 text-base text-gray-500">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.
+          </dd>
+        </div>
+
+        <div class="relative">
+          <dt>
+            <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
+              <!-- Heroicon name: outline/lightning-bolt -->
+              <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+            </div>
+            <p class="ml-16 text-lg leading-6 font-medium text-gray-900">Transfers are instant</p>
+          </dt>
+          <dd class="mt-2 ml-16 text-base text-gray-500">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.
+          </dd>
+        </div>
+
+        <div class="relative">
+          <dt>
+            <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
+              <!-- Heroicon name: outline/annotation -->
+              <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
+              </svg>
+            </div>
+            <p class="ml-16 text-lg leading-6 font-medium text-gray-900">Mobile notifications</p>
+          </dt>
+          <dd class="mt-2 ml-16 text-base text-gray-500">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.
+          </dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+</div>
+</section>
+
+<section class="row lg:text-center">
+<div class="h-screen flex-auto container">
+    <div class="container sm:mx-auto py-20 px-3">
+        <div class="grid lg:grid-cols-3 gap-6">
+            <div class="p-3 border rounded px-5 py-6"> <span class="text-2xl">Intro</span>
+                <div class="flex row-auto items-center mt-1">
+                    <h2 class="text-3xl font-bold">$19</h2> <span class="font-light text-gray-400 ml-1">/month</span>
+                </div>
+                <p class="text-gray-500 mt-4">For most businesses that want to optimize the web series</p>
+                <div class="flex row-auto items-center mt-4"> <i class="fa fa-check-circle-o text-gray-400"></i> <span class="ml-3 text-gray-500">All limited links</span> </div>
+                <div class="flex row-auto items-center mt-2"> <i class="fa fa-check-circle-o text-gray-400"></i> <span class="ml-3 text-gray-500">Own Analytics platform</span> </div>
+                <div class="flex row-auto items-center mt-2"> <i class="fa fa-check-circle-o text-gray-400"></i> <span class="ml-3 text-gray-500">Chat support</span> </div>
+                <div class="flex row-auto items-center mt-2"> <i class="fa fa-check-circle-o text-gray-400"></i> <span class="ml-3 text-gray-500">Optimize hashtags</span> </div>
+                <div class="flex row-auto items-center mt-2"> <i class="fa fa-check-circle-o text-gray-400"></i> <span class="ml-3 text-gray-500">Unlimited users</span> </div>
+                <div class="mt-5"> <button class="border-2 border-purple-900 p-2 px-9 rounded text-purple-900 hover:shadow hover:bg-purple-900 hover:text-white">Choose plan</button> </div>
+            </div>
+            <div class="p-3 border rounded px-5 py-6"> <span class="text-2xl">Base</span>
+                <div class="flex row-auto items-center mt-1">
+                    <h2 class="text-3xl font-bold">$39</h2> <span class="font-light text-gray-400 ml-1">/month</span>
+                </div>
+                <p class="text-gray-500 mt-4">For most businesses that want to optimize the web series</p>
+                <div class="flex row-auto items-center mt-4"> <i class="fa fa-check-circle-o text-gray-400"></i> <span class="ml-3 text-gray-500">All limited links</span> </div>
+                <div class="flex row-auto items-center mt-2"> <i class="fa fa-check-circle-o text-gray-400"></i> <span class="ml-3 text-gray-500">Own Analytics platform</span> </div>
+                <div class="flex row-auto items-center mt-2"> <i class="fa fa-check-circle-o text-gray-400"></i> <span class="ml-3 text-gray-500">Chat support</span> </div>
+                <div class="flex row-auto items-center mt-2"> <i class="fa fa-check-circle-o text-gray-400"></i> <span class="ml-3 text-gray-500">Optimize hashtags</span> </div>
+                <div class="flex row-auto items-center mt-2"> <i class="fa fa-check-circle-o text-gray-400"></i> <span class="ml-3 text-gray-500">Unlimited users</span> </div>
+                <div class="mt-5"> <button class="border-2 border-purple-900 p-2 px-9 rounded text-purple-900 hover:shadow hover:bg-purple-900 hover:text-white">Choose plan</button> </div>
+            </div>
+            <div class="p-3 bg-purple-900 rounded px-5 py-6 text-white"> <span class="text-2xl">Popular</span>
+                <div class="flex row-auto items-center mt-1">
+                    <h2 class="text-3xl font-bold">$99</h2> <span class="font-light text-white ml-1">/month</span>
+                </div>
+                <p class="text-white mt-4">For most businesses that want to optimize the web series</p>
+                <div class="flex row-auto items-center mt-4"> <i class="fa fa-check-circle-o text-white"></i> <span class="ml-3 text-white">All limited links</span> </div>
+                <div class="flex row-auto items-center mt-2"> <i class="fa fa-check-circle-o text-white"></i> <span class="ml-3 text-white">Own Analytics platform</span> </div>
+                <div class="flex row-auto items-center mt-2"> <i class="fa fa-check-circle-o text-white"></i> <span class="ml-3 text-white">Chat support</span> </div>
+                <div class="flex row-auto items-center mt-2"> <i class="fa fa-check-circle-o text-white"></i> <span class="ml-3 text-white">Optimize hashtags</span> </div>
+                <div class="flex row-auto items-center mt-2"> <i class="fa fa-check-circle-o text-white"></i> <span class="ml-3 text-white">Unlimited users</span> </div>
+                <div class="mt-5"> <button class="border-2 border-white p-2 px-9 rounded text-white hover:shadow hover:bg-white hover:text-black">Choose plan</button> </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 </section>

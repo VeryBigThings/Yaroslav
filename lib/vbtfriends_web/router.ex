@@ -17,6 +17,7 @@ defmodule VbtfriendsWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+    get "/about-us", AboutusController, :index
   end
 
   # Other scopes may use custom stacks.

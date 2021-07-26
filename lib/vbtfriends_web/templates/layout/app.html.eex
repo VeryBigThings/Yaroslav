@@ -22,7 +22,7 @@
 
           <div class="flex items-center">
             <div class="flex flex-col md:flex-row md:mx-6">
-              <a href="https://hexdocs.pm/phoenix/overview.html" class="my-1 text-sm text-gray-700 font-medium hover:text-indigo-500 md:mx-4 md:my-0">Get Started</a>
+              <a href="/about-us" class="my-1 text-sm text-gray-700 font-medium hover:text-indigo-500 md:mx-4 md:my-0">About us</a>
               <%= if function_exported?(Routes, :live_dashboard_path, 2) do %>
                 <%= link "LiveDashboard", to: Routes.live_dashboard_path(@conn, :home), class: "my-1 text-sm text-gray-700 font-medium hover:text-indigo-500 md:mx-4 md:my-0" %>
               <% end %>
