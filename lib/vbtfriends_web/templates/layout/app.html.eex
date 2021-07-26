@@ -15,24 +15,30 @@
           <div class="flex justify-between items-center">
             <div>
               <a class="inline-block" href="/">
-                <img src="<%= Routes.static_path(@conn, "/images/phoenix.png") %>" class="h-8 object-contain" />
+                <img src="<%= Routes.static_path(@conn, "/images/vbt.png") %>" class="h-20 object-contain" />
               </a>
             </div>
           </div>
 
           <div class="flex items-center">
             <div class="flex flex-col md:flex-row md:mx-6">
-              <a href="/about-us" class="my-1 text-sm text-gray-700 font-medium hover:text-indigo-500 md:mx-4 md:my-0">About us</a>
-              <%= if function_exported?(Routes, :live_dashboard_path, 2) do %>
-                <%= link "LiveDashboard", to: Routes.live_dashboard_path(@conn, :home), class: "my-1 text-sm text-gray-700 font-medium hover:text-indigo-500 md:mx-4 md:my-0" %>
-              <% end %>
+              <a href="/about-us" class="my-1 text-2xl text-gray-700 font-medium hover:text-indigo-500 md:mx-4 md:my-0">About us</a>
+              <a href="/users" class="my-1 text-2xl text-gray-700 font-medium hover:text-indigo-500 md:mx-4 md:my-0">Users</a>
+
             </div>
           </div>
         </div>
       </nav>
     </header>
+    <main role="main" class="container">
+      <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
+      <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
 
-    <%= @inner_content %>
+      <%= @inner_content %>
+
+    </main>
+
+
 
     <footer class="bg-red-700 mt-auto py-3">
       <div class="container pb-4 max-w-4xl mx-auto text-center text-gray-300 text-sm">
