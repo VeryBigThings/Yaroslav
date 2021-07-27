@@ -1,11 +1,14 @@
 defmodule Vbtfriends.Admin.Page do
   use Ecto.Schema
   import Ecto.Changeset
+  alias Vbtfriends.Admin.Author
 
   schema "pages" do
     field :body, :string
     field :title, :string
     field :views, :integer
+    belongs_to :author, Author
+
 
     timestamps()
   end
