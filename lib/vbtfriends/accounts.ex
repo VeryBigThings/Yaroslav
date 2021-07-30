@@ -205,6 +205,7 @@ defmodule Vbtfriends.Accounts do
   def change_credential(%Credential{} = credential, attrs \\ %{}) do
     Credential.changeset(credential, attrs)
   end
+
   @doc """
   Authenticate user by email and cancel password authentication
   Use in future https://github.com/ueberauth/guardian

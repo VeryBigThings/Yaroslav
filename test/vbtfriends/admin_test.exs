@@ -70,7 +70,11 @@ defmodule Vbtfriends.AdminTest do
     alias Vbtfriends.Admin.Author
 
     @valid_attrs %{bio: "some bio", genre: "some genre", role: "some role"}
-    @update_attrs %{bio: "some updated bio", genre: "some updated genre", role: "some updated role"}
+    @update_attrs %{
+      bio: "some updated bio",
+      genre: "some updated genre",
+      role: "some updated role"
+    }
     @invalid_attrs %{bio: nil, genre: nil, role: nil}
 
     def author_fixture(attrs \\ %{}) do

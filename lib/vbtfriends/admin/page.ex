@@ -9,7 +9,6 @@ defmodule Vbtfriends.Admin.Page do
     field :views, :integer
     belongs_to :author, Author
 
-
     timestamps()
   end
 

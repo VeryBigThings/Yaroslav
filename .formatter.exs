@@ -1,5 +1,5 @@
 [
-  import_deps: [:phoenix, :ecto, :ecto_sql, :ecto_enum, :absinthe, :surface],
+  import_deps: [:phoenix, :ecto, :ecto_sql],
   inputs: [
     "*.{ex,exs}",
     "priv/*/seeds.exs",
