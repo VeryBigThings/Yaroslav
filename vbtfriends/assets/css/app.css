@@ -17,7 +17,9 @@
 
 
 
-
+.yarr{
+    color:red;
+}
 .meter {
     display: flex;
     overflow: hidden;
