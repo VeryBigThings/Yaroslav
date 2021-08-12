@@ -11,7 +11,7 @@ defmodule VbtfriendsWeb.LicenseLive do
 
   def render(assigns) do
     ~L"""
-    <h1>Team License</h1>
+    <h2  class="text-6xl mb-8  font-bold text-center">Team License</h2>
     <div id="license">
       <div class="card">
         <div class="content">

@@ -26,6 +26,7 @@ defmodule VbtfriendsWeb.Router do
 
     live "/timer", TimerLive
     live "/refresh", RefreshLive
+    live "/search", SearchLive
   end
 
   # Other scopes may use custom stacks.

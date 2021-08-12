@@ -7,10 +7,9 @@ defmodule VbtfriendsWeb.LightLive do
   end
   def render(assigns) do
     ~L"""
-    <h1>Front Porch Light</h1>
-    <div class="yarr">Yarr
-    </div>
-    <div id="light">
+
+    <h2 class="text-6xl mb-8  font-bold text-center">Front Porch Light </h2>
+      <div id="light">
       <div class="meter">
         <span style="width: <%= @brightness %>%" class="bg-red-400 block">
           <%= @brightness %>%

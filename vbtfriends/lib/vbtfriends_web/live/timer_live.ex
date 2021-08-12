@@ -20,7 +20,7 @@ defmodule VbtfriendsWeb.TimerLive do
 
   def render(assigns) do
     ~L"""
-    <h1  class="text-6xl mb-8  font-bold text-center">Timer </h1>
+    <h2 class="text-6xl mb-8  font-bold text-center">Timer </h2>
     <div class="flex justify-center bg-white-100 ">
       <p class="m-4 font-semibold text-indigo-800 ">
         <%= if @time_remaining > 0 do %>

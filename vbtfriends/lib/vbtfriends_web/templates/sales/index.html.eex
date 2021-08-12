@@ -1,7 +1,9 @@
-<h1>Sales Stuff</h1>
+<h2  class="text-6xl mb-8  font-bold text-center">Sales Stuff</h2>
 <%= live_render(@conn, VbtfriendsWeb.SalesDashboardLive) %>
 <h2>Timer from liveview layouts</h2>
 <%= live_render(@conn, VbtfriendsWeb.TimerLive) %>
+
+<%= live_render(@conn, VbtfriendsWeb.LicenseLive) %>
 
 <h2>Recent Orders</h2>
 <%= live_render(@conn, VbtfriendsWeb.RefreshLive) %>
