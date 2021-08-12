@@ -1,0 +1,7 @@
+<h1>Sales Stuff</h1>
+<%= live_render(@conn, VbtfriendsWeb.SalesDashboardLive) %>
+<h2>Timer from liveview layouts</h2>
+<%= live_render(@conn, VbtfriendsWeb.TimerLive) %>
+
+<h2>Recent Orders</h2>
+<%= live_render(@conn, VbtfriendsWeb.RefreshLive) %>

@@ -17,11 +17,15 @@ defmodule VbtfriendsWeb.Router do
   scope "/", VbtfriendsWeb do
     pipe_through :browser
 
+    get "/sales", SalesController, :index
+
     live "/", PageLive, :index
     live "/light", LightLive
     live "/license", LicenseLive
     live "/sales-dashboard", SalesDashboardLive
-    live "/sales", SalesLive
+
+    live "/timer", TimerLive
+    live "/refresh", RefreshLive
   end
 
   # Other scopes may use custom stacks.
