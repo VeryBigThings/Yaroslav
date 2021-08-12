@@ -21,6 +21,7 @@ defmodule VbtfriendsWeb.Router do
     live "/light", LightLive
     live "/license", LicenseLive
     live "/sales-dashboard", SalesDashboardLive
+    live "/sales", SalesLive
   end
 
   # Other scopes may use custom stacks.
