@@ -19,13 +19,13 @@ defmodule VbtfriendsWeb.SearchLive do
     <h2  class="text-6xl mb-8  font-bold text-center">Find a Store</h2>
     <p class="">By zip (zip: "59602", "80204")</p>
     <div class=" bg-white-100">
-      <form phx-submit="zip-search" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex">
+      <form phx-submit="zip-search" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 relative">
         <input type="text" name="zip" value="<%= @zip %>" class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
                placeholder="Zip Code"
                autofocus autocomplete="off"
                <%= if @loading, do: "readonly" %> />
 
-        <button type="submit"  class="flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded" >
+        <button type="submit"  class="absolute right-0 top-6 right-8 bg-white pl-4 pr-4" >
           <img src="images/search.svg"  class="h-8 object-contain">
         </button>
       </form>
@@ -39,26 +39,26 @@ defmodule VbtfriendsWeb.SearchLive do
       <div class="stores">
         <ul>
           <%= for store <- @stores do %>
-            <li>
-              <div class="first-line">
+            <li  class="p-4 rounded-lg border border-black-50 bg-blue-100">
+              <div class="first-line flex justify-between">
                 <div class="name">
                   <%= store.name %>
                 </div>
                 <div class="status">
                   <%= if store.open do %>
-                    <span class="open">Open</span>
+                    <span class="open  rounded-lg border border-green-300 bg-green-300 m-4 p-8 block">Open</span>
                   <% else %>
-                    <span class="closed">Closed</span>
+                    <span class="closed  rounded-lg border border-red-300 bg-red-300 m-4 p-8 block">Closed</span>
                   <% end %>
                 </div>
               </div>
               <div class="second-line">
                 <div class="street">
-                  <img src="images/location.svg"  class="h-8 object-contain">
+                  <img src="images/location.svg"  class="h-8 object-contain mr-4 float-left">
                   <%= store.street %>
                 </div>
                 <div class="phone_number">
-                  <img src="images/phone.svg"  class="h-8 object-contain">
+                  <img src="images/phone.svg"  class="h-8 object-contain  mr-4 float-left">
                   <%= store.phone_number %>
                 </div>
               </div>
@@ -93,11 +93,13 @@ defmodule VbtfriendsWeb.SearchLive do
 
         {:noreply, socket}
 
-      stores ->
-         socket =
-          socket
+        stores ->
+          socket =
+            socket
             |> clear_flash()
             |> assign(stores: stores, loading: false)
+
+          {:noreply, socket}
     end
   end
 end
