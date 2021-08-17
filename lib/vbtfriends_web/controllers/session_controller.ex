@@ -15,6 +15,7 @@ defmodule VbtfriendsWeb.SessionController do
         |> put_session(:user_id, user.id)
         |> configure_session(renew: true)
         |> redirect(to: "/")
+
       {:error, :unauthorized} ->
         conn
         |> put_flash(:error, "Bad email/password combination")

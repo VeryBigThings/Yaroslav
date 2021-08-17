@@ -9,6 +9,5 @@ defmodule Vbtfriends.Repo.Migrations.CreatePages do
 
       timestamps()
     end
-
   end
 end

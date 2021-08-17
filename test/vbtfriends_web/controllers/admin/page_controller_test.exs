@@ -75,6 +75,7 @@ defmodule VbtfriendsWeb.Admin.PageControllerTest do
     test "deletes chosen page", %{conn: conn, page: page} do
       conn = delete(conn, Routes.admin_page_path(conn, :delete, page))
       assert redirected_to(conn) == Routes.admin_page_path(conn, :index)
+
       assert_error_sent 404, fn ->
         get(conn, Routes.admin_page_path(conn, :show, page))
       end

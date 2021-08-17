@@ -101,7 +101,10 @@ defmodule Vbtfriends.AccountsTest do
 
     test "update_credential/2 with valid data updates the credential" do
       credential = credential_fixture()
-      assert {:ok, %Credential{} = credential} = Accounts.update_credential(credential, @update_attrs)
+
+      assert {:ok, %Credential{} = credential} =
+               Accounts.update_credential(credential, @update_attrs)
+
       assert credential.email == "some updated email"
     end
 

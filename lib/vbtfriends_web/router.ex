@@ -19,14 +19,18 @@ defmodule VbtfriendsWeb.Router do
     get "/", PageController, :index
     get "/about-us", AboutusController, :index
     resources "/users", UserController
-    resources "/sessions", SessionController, only: [:new, :create, :delete],
-                                              singleton: true
+
+    resources "/sessions", SessionController,
+      only: [:new, :create, :delete],
+      singleton: true
   end
+
   scope "/admin", VbtfriendsWeb.Admin, as: :admin do
     pipe_through [:browser, :authenticate_user]
 
     resources "/pages", PageController
   end
+
   # add an authentication plug to the router that will allow us to lock down certain routes after a user has used our new session controller to sign-in
   defp authenticate_user(conn, _) do
     case get_session(conn, :user_id) do
@@ -35,6 +39,7 @@ defmodule VbtfriendsWeb.Router do
         |> Phoenix.Controller.put_flash(:error, "Login required")
         |> Phoenix.Controller.redirect(to: "/")
         |> halt()
+
       user_id ->
         assign(conn, :current_user, Vbtfriends.Accounts.get_user!(user_id))
     end

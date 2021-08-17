@@ -6,10 +6,9 @@ defmodule Vbtfriends.Admin do
   import Ecto.Query, warn: false
   alias Vbtfriends.Repo
 
-  #alias Vbtfriends.Admin.Page
+  # alias Vbtfriends.Admin.Page
   alias Vbtfriends.Admin.{Page, Author}
   alias Vbtfriends.Accounts
-
 
   @doc """
   Returns the list of pages.
@@ -45,6 +44,7 @@ defmodule Vbtfriends.Admin do
     |> Repo.get!(id)
     |> Repo.preload(author: [user: :credential])
   end
+
   @doc """
   Creates a page.
 
@@ -71,7 +71,9 @@ defmodule Vbtfriends.Admin do
     |> Repo.insert()
     |> handle_existing_author()
   end
+
   defp handle_existing_author({:ok, author}), do: author
+
   defp handle_existing_author({:error, changeset}) do
     Repo.get_by!(Author, user_id: changeset.data.user_id)
   end

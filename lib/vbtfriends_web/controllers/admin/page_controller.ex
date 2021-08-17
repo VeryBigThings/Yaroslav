@@ -51,13 +51,14 @@ defmodule VbtfriendsWeb.Admin.PageController do
     end
   end
 
-   def delete(conn, _) do
+  def delete(conn, _) do
     {:ok, _page} = Admin.delete_page(conn.assigns.page)
 
     conn
     |> put_flash(:info, "Page deleted successfully.")
     |> redirect(to: Routes.admin_page_path(conn, :index))
   end
+
   defp require_existing_author(conn, _) do
     author = Admin.ensure_author_exists(conn.assigns.current_user)
     assign(conn, :current_author, author)
@@ -74,5 +75,5 @@ defmodule VbtfriendsWeb.Admin.PageController do
       |> redirect(to: Routes.cms_page_path(conn, :index))
       |> halt()
     end
-end
+  end
 end
