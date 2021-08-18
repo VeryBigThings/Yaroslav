@@ -29,6 +29,7 @@ defmodule VbtfriendsWeb.Router do
     live "/search", SearchLive
     live "/autocomplete", AutocompleteLive
     live "/flights", FlightsLive
+    live "/filter", FilterLive
   end
 
   # Other scopes may use custom stacks.
