@@ -63,8 +63,8 @@ defmodule VbtfriendsWeb.ServersLive do
             <div class="body">
               <div class="row">
                 <div class="deploys">
-                  <!--<img src="images/deploy.svg"  class="h-8 object-contain"> -->
-                  <img src="images/search.svg"  class="h-8 object-contain">
+                  <img src="images/deploy.svg"  class="h-8 object-contain">
+
                   <span>
                     <%= @selected_server.deploy_count %> deploys
                   </span>
@@ -92,6 +92,7 @@ defmodule VbtfriendsWeb.ServersLive do
         </div>
       </div>
     </div>
+
     """
   end
 
@@ -101,8 +102,8 @@ defmodule VbtfriendsWeb.ServersLive do
     assigns = %{name: server.name}
 
     ~L"""
-   <!-- <img src="images/server.svg"  class="h-8 object-contain"  > -->
-    <img src="images/location.svg"  class="h-8 object-contain float-left mr-4">
+
+    <img src="images/server.svg"  class="h-8 object-contain  float-left mr-4"  >
     <%= @name %>
     """
   end
