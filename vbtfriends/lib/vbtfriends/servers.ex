@@ -101,4 +101,6 @@ defmodule Vbtfriends.Servers do
   def change_server(%Server{} = server, attrs \\ %{}) do
     Server.changeset(server, attrs)
   end
+
+  def get_server_by_name(name), do: Repo.get_by(Server, name: name)
 end

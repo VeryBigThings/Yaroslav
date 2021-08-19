@@ -15,10 +15,8 @@ defmodule VbtfriendsWeb.ServersLive do
     {:ok, socket}
   end
 
-  def handle_params(%{"id" => id}, _url, socket) do
-    id = String.to_integer(id)
-
-    server = Servers.get_server!(id)
+  def handle_params(%{"name" => name}, _url, socket) do
+    server = Servers.get_server_by_name(name)
 
     socket =
       assign(socket,
@@ -36,24 +34,24 @@ defmodule VbtfriendsWeb.ServersLive do
   def render(assigns) do
     ~L"""
     <h1>Servers</h1>
-    <div id="servers">
-      <div class="sidebar">
+    <div id="servers" class="flex justify-start">
+      <div class="sidebar bg-blue-100 px-20 py-10">
         <nav>
           <%= for server <- @servers do %>
             <div>
-              <%= live_patch link_body(server),
-                    to: Routes.live_path(
-                              @socket,
-                              __MODULE__,
-                              id: server.id
-                        ),
-                    class: if server == @selected_server, do: "active" %>
+            <%= live_patch link_body(server),
+            to: Routes.live_path(
+                      @socket,
+                      __MODULE__,
+                      name: server.name
+                ),
+            class: if server == @selected_server, do: "active" %>
             </div>
 
           <% end %>
         </nav>
       </div>
-      <div class="main">
+      <div class="main bg-green-100 px-20 py-10">
         <div class="wrapper">
           <div class="card">
             <div class="header">
@@ -65,7 +63,7 @@ defmodule VbtfriendsWeb.ServersLive do
             <div class="body">
               <div class="row">
                 <div class="deploys">
-                  <img src="images/deploy.svg"  class="h-8 object-contain">
+                  <!--<img src="images/deploy.svg"  class="h-8 object-contain"> -->
                   <img src="images/search.svg"  class="h-8 object-contain">
                   <span>
                     <%= @selected_server.deploy_count %> deploys
@@ -97,11 +95,13 @@ defmodule VbtfriendsWeb.ServersLive do
     """
   end
 
+
+
   defp link_body(server) do
     assigns = %{name: server.name}
 
     ~L"""
-    <img src="images/server.svg"  class="h-8 object-contain"  >
+   <!-- <img src="images/server.svg"  class="h-8 object-contain"  > -->
     <img src="images/location.svg"  class="h-8 object-contain float-left mr-4">
     <%= @name %>
     """
