@@ -1,11 +1,11 @@
 /* This file is for your main application css. */
 
-@import "./phoenix.css";
-@import "./live_view.css";
-@import "./custom.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import "./phoenix.css";
+@import "./live_view.css";
+@import "./custom.css";
 
 /* LiveView specific classes for your customizations */
 
