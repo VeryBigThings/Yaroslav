@@ -31,7 +31,10 @@ defmodule VbtfriendsWeb.Router do
     live "/flights", FlightsLive
     live "/filter", FilterLive
     live "/servers", ServersLive
+    live "/servers/new", ServersLive, :new
     live "/paginate", PaginateLive
+    live "/sort", SortLive
+    live "/volunteers", VolunteersLive
   end
 
   # Other scopes may use custom stacks.

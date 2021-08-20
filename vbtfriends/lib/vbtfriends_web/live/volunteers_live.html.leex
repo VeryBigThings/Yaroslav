@@ -1,23 +1,23 @@
-<h1>Volunteer Check-In</h1>
+<h1 class="text-5xl	mb-10">Volunteer Check-In</h1>
 <div id="checkin">
   <%= f = form_for @changeset, "#",
             phx_submit: "save"  %>
 
-    <div class="field">
+    <div class="inline-block float-left mx-10">
       <%= text_input f, :name,
                      placeholder: "Name",
                      autocomplete: "off" %>
-      <%= error_tag f, :name %>
+      <%= error_tag f,  :name %>
     </div>
 
-    <div class="field">
+    <div class="inline-block mx-10">
       <%= telephone_input f, :phone,
                           placeholder: "Phone",
                           autocomplete: "off" %>
       <%= error_tag f, :phone %>
     </div>
 
-    <%= submit "Check In", phx_disable_with: "Saving..." %>
+    <%= submit "Check In", phx_disable_with: "Saving...", class: "px-10" %>
   </form>
 
   <div id="volunteers" phx-update="prepend">
