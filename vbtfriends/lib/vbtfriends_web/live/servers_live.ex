@@ -94,7 +94,8 @@ defmodule VbtfriendsWeb.ServersLive do
         <div class="wrapper">
         <%= if @live_action == :new do %>
         <%= f = form_for @changeset, "#",
-                  phx_submit: "save" %>
+                  phx_submit: "save",
+                  phx_change: "validate" %>
           <div class="field">
             <%= label f , :name %>
             <%= text_input f, :name, autocomplete: "off" %>
@@ -210,6 +211,17 @@ defmodule VbtfriendsWeb.ServersLive do
         {:noreply, socket}
     end
   end
+    # This is a new function that handles the "validate" event.
+    def handle_event("validate", %{"server" => params}, socket) do
+      changeset =
+        %Server{}
+        |> Servers.change_server(params)
+        |> Map.put(:action, :insert)
+
+      socket = assign(socket, changeset: changeset)
+
+      {:noreply, socket}
+    end
 
   defp link_body(server) do
 
