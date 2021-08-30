@@ -131,9 +131,14 @@ defmodule VbtfriendsWeb.ServersLive do
           <div class="card">
             <div class="header">
               <h2><%= @selected_server.name %></h2>
-              <span class="<%= @selected_server.status %>">
-                <%= @selected_server.status %>
-              </span>
+              <button
+                  class="<%= @selected_server.status %>"
+                  phx-click="toggle-status"
+                  phx-value-id="<%= @selected_server.id %>"
+                  phx-disable-with="Saving...">
+                  <%= @selected_server.status %>
+                </button>
+
             </div>
             <div class="body">
               <div class="row">
@@ -222,6 +227,46 @@ defmodule VbtfriendsWeb.ServersLive do
 
       {:noreply, socket}
     end
+
+      # This is a new function that handles the "toggle-status" event.
+  def handle_event("toggle-status", %{"id" => id}, socket) do
+    server = Servers.get_server!(id)
+
+    # Update the server's status to the opposite of its current status:
+
+    new_status = if server.status == "up", do: "down", else: "up"
+
+    {:ok, server} =
+      Servers.update_server(
+        server,
+        %{status: new_status}
+      )
+
+    socket = assign(socket, selected_server: server)
+
+    # Refetch the list of servers to update the server's red or
+    # green status indicator displayed in the sidebar:
+
+    servers = Servers.list_servers()
+
+    socket = assign(socket, servers: servers)
+
+    # Or, to avoid another database hit, you can find the matching
+    # server in the current list of servers, change it, and update
+    # the list of servers:
+
+    socket =
+      update(socket, :servers, fn servers ->
+        for s <- servers do
+          case s.id == server.id do
+            true -> server
+            _ -> s
+          end
+        end
+      end)
+
+    {:noreply, socket}
+  end
 
   defp link_body(server) do
 

@@ -25,24 +25,22 @@
 
   <div id="volunteers" phx-update="prepend">
     <%= for volunteer <- @volunteers do %>
-      <div class="volunteer <%= if volunteer.checked_out, do: "out" %>"
+      <div class="volunteer flex justify-between content-center mb-4 <%= if volunteer.checked_out, do: "out" %>"
            id="<%= volunteer.id %>">
         <div class="name">
           <%= volunteer.name %>
         </div>
         <div class="phone">
-          <img src="images/phone.svg">
+          <img src="images/phone.svg" class="float-left mr-4">
           <%= volunteer.phone %>
         </div>
         <div class="status">
-          <%= if volunteer.checked_out do %>
-            <img src="/images/check-circle.svg">
-            Volunteered
-          <% else %>
-            <button>
-              Check Out
-            </button>
-          <% end %>
+           <button phx-click="toggle-status"
+                  phx-value-id="<%= volunteer.id %>"
+                  phx-disable-with="Saving..."
+                  class="px-8">
+            <%= if volunteer.checked_out, do: "Check In", else: "Check Out" %>
+          </button>
         </div>
       </div>
     <% end %>
