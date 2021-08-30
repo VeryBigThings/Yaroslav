@@ -5,6 +5,8 @@ defmodule VbtfriendsWeb.ServersLive do
   alias Vbtfriends.Servers.Server
 
   def mount(_params, _session, socket) do
+    if connected?(socket), do: Servers.subscribe()
+
     servers = Servers.list_servers()
 
     socket =
@@ -185,12 +187,12 @@ defmodule VbtfriendsWeb.ServersLive do
 
         # Prepend newly-minted server to list.
 
-        socket =
-          update(
-            socket,
-            :servers,
-            fn servers -> [server | servers] end
-          )
+        # socket =
+        #   update(
+        #     socket,
+        #     :servers,
+        #     fn servers -> [server | servers] end
+        #   )
 
         # Navigate to the new server's detail page.
         # Invokes handle_params which already gets the
@@ -242,31 +244,80 @@ defmodule VbtfriendsWeb.ServersLive do
         %{status: new_status}
       )
 
-    socket = assign(socket, selected_server: server)
+    # socket = assign(socket, selected_server: server)
 
-    # Refetch the list of servers to update the server's red or
-    # green status indicator displayed in the sidebar:
+    # # Refetch the list of servers to update the server's red or
+    # # green status indicator displayed in the sidebar:
 
-    servers = Servers.list_servers()
+    # servers = Servers.list_servers()
 
-    socket = assign(socket, servers: servers)
+    # socket = assign(socket, servers: servers)
 
-    # Or, to avoid another database hit, you can find the matching
-    # server in the current list of servers, change it, and update
-    # the list of servers:
+    # # Or, to avoid another database hit, you can find the matching
+    # # server in the current list of servers, change it, and update
+    # # the list of servers:
 
-    socket =
-      update(socket, :servers, fn servers ->
-        for s <- servers do
-          case s.id == server.id do
-            true -> server
-            _ -> s
-          end
-        end
-      end)
+    # socket =
+    #   update(socket, :servers, fn servers ->
+    #     for s <- servers do
+    #       case s.id == server.id do
+    #         true -> server
+    #         _ -> s
+    #       end
+    #     end
+    #   end)
 
     {:noreply, socket}
   end
+
+  # New function to handle a broadcast message indicating
+# that a server has been created.
+def handle_info({:server_created, server}, socket) do
+  socket =
+    update(
+      socket,
+      :servers,
+      fn servers -> [server | servers] end
+    )
+
+  {:noreply, socket}
+end
+
+# New function to handle a broadcast message indicating
+# that a server has been updated.
+def handle_info({:server_updated, server}, socket) do
+
+  # If the updated server is the selected server,
+  # assign it so the button is re-rendered with
+  # the correct status text.
+  socket =
+    if server.id == socket.assigns.selected_server.id do
+      assign(socket, selected_server: server)
+    else
+      socket
+    end
+
+  # Refetch the list of servers so the status indicators
+  # in the sidebar are updated:
+
+  servers = Servers.list_servers()
+  socket = assign(socket, servers: servers)
+
+  # Or find the matching server in the current list of
+  # servers, change it, and update the list of servers:
+
+  socket =
+    update(socket, :servers, fn servers ->
+      for s <- servers do
+        case s.id == server.id do
+          true -> server
+          _ -> s
+        end
+      end
+    end)
+
+  {:noreply, socket}
+end
 
   defp link_body(server) do
 

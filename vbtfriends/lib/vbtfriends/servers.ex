@@ -8,6 +8,11 @@ defmodule Vbtfriends.Servers do
 
   alias Vbtfriends.Servers.Server
 
+
+  def subscribe do
+    Phoenix.PubSub.subscribe(Vbtfriends.PubSub, "servers")
+  end
+
   @doc """
   Returns the list of servers.
 
@@ -53,24 +58,15 @@ defmodule Vbtfriends.Servers do
     %Server{}
     |> Server.changeset(attrs)
     |> Repo.insert()
+    |> broadcast(:server_created)
   end
 
-  @doc """
-  Updates a server.
-
-  ## Examples
-
-      iex> update_server(server, %{field: new_value})
-      {:ok, %Server{}}
-
-      iex> update_server(server, %{field: bad_value})
-      {:error, %Ecto.Changeset{}}
-
-  """
+  # Broadcast a message after a server is updated.
   def update_server(%Server{} = server, attrs) do
     server
     |> Server.changeset(attrs)
     |> Repo.update()
+    |> broadcast(:server_updated)
   end
 
   @doc """
@@ -103,4 +99,17 @@ defmodule Vbtfriends.Servers do
   end
 
   def get_server_by_name(name), do: Repo.get_by(Server, name: name)
+
+  # New function that encapsulates broadcast details.
+defp broadcast({:ok, server}, event) do
+  Phoenix.PubSub.broadcast(
+    Vbtfriends.PubSub,
+    "servers",
+    {event, server}
+  )
+
+  {:ok, server}
+end
+
+defp broadcast({:error, _reason} = error, _event), do: error
 end

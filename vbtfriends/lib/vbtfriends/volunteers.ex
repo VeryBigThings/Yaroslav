@@ -8,8 +8,10 @@ defmodule Vbtfriends.Volunteers do
 
   alias Vbtfriends.Volunteers.Volunteer
 
+  @topic inspect(__MODULE__)
+
   def subscribe do
-    Phoenix.PubSub.subscribe(Vbtfriends.PubSub, "volunteers")
+    Phoenix.PubSub.subscribe(Vbtfriends.PubSub, @topic)
   end
 
   @doc """
@@ -70,7 +72,7 @@ defmodule Vbtfriends.Volunteers do
   def broadcast({:ok, volunteer}, event) do
     Phoenix.PubSub.broadcast(
       Vbtfriends.PubSub,
-      "volunteers",
+      @topic,
       {event, volunteer}
     )
 
