@@ -48,6 +48,7 @@ defmodule Vbtfriends.MixProject do
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
       {:number, "~> 1.0"},
+      {:faker, "~> 0.14.0"},
       {:timex, "~> 3.0"}
     ]
   end
