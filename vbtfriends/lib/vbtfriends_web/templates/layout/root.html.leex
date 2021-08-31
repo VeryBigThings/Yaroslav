@@ -14,6 +14,8 @@
       <section class="container">
         <nav role="navigation">
 
+          <%= render "_user_menu.html", assigns %>
+
         </nav>
         <a href="/" class="phx-logo">
           <img src="<%= Routes.static_path(@conn, "/images/vbt.png") %>" alt="Phoenix Framework Logo" class="h-20 object-contain"  />
