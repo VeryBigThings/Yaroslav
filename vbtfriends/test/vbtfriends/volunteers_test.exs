@@ -42,7 +42,10 @@ defmodule Vbtfriends.VolunteersTest do
 
     test "update_volunteer/2 with valid data updates the volunteer" do
       volunteer = volunteer_fixture()
-      assert {:ok, %Volunteer{} = volunteer} = Volunteers.update_volunteer(volunteer, @update_attrs)
+
+      assert {:ok, %Volunteer{} = volunteer} =
+               Volunteers.update_volunteer(volunteer, @update_attrs)
+
       assert volunteer.checked_out == false
       assert volunteer.name == "some updated name"
       assert volunteer.phone == "some updated phone"

@@ -34,7 +34,6 @@ defmodule VbtfriendsWeb.ServersLive do
   # based on whether the action is "new" or not.
   def handle_params(_params, _url, socket) do
     if socket.assigns.live_action == :new do
-
       # The live_action is "new", so the form is being
       # displayed. Therefore, assign an empty changeset
       # for the form. Also don't show the selected
@@ -50,7 +49,6 @@ defmodule VbtfriendsWeb.ServersLive do
 
       {:noreply, socket}
     else
-
       # The live_action is NOT "new", so the form
       # is NOT being displayed. Therefore, don't assign
       # an empty changeset. Instead, just select the
@@ -182,9 +180,7 @@ defmodule VbtfriendsWeb.ServersLive do
   # This is a new function that handles the "save" event.
   def handle_event("save", %{"server" => params}, socket) do
     case Servers.create_server(params) do
-
       {:ok, server} ->
-
         # Prepend newly-minted server to list.
 
         # socket =
@@ -211,26 +207,26 @@ defmodule VbtfriendsWeb.ServersLive do
         {:noreply, socket}
 
       {:error, %Ecto.Changeset{} = changeset} ->
-
         # Assign errored changeset for form.
 
         socket = assign(socket, changeset: changeset)
         {:noreply, socket}
     end
   end
-    # This is a new function that handles the "validate" event.
-    def handle_event("validate", %{"server" => params}, socket) do
-      changeset =
-        %Server{}
-        |> Servers.change_server(params)
-        |> Map.put(:action, :insert)
 
-      socket = assign(socket, changeset: changeset)
+  # This is a new function that handles the "validate" event.
+  def handle_event("validate", %{"server" => params}, socket) do
+    changeset =
+      %Server{}
+      |> Servers.change_server(params)
+      |> Map.put(:action, :insert)
 
-      {:noreply, socket}
-    end
+    socket = assign(socket, changeset: changeset)
 
-      # This is a new function that handles the "toggle-status" event.
+    {:noreply, socket}
+  end
+
+  # This is a new function that handles the "toggle-status" event.
   def handle_event("toggle-status", %{"id" => id}, socket) do
     server = Servers.get_server!(id)
 
@@ -271,57 +267,54 @@ defmodule VbtfriendsWeb.ServersLive do
   end
 
   # New function to handle a broadcast message indicating
-# that a server has been created.
-def handle_info({:server_created, server}, socket) do
-  socket =
-    update(
-      socket,
-      :servers,
-      fn servers -> [server | servers] end
-    )
+  # that a server has been created.
+  def handle_info({:server_created, server}, socket) do
+    socket =
+      update(
+        socket,
+        :servers,
+        fn servers -> [server | servers] end
+      )
 
-  {:noreply, socket}
-end
+    {:noreply, socket}
+  end
 
-# New function to handle a broadcast message indicating
-# that a server has been updated.
-def handle_info({:server_updated, server}, socket) do
-
-  # If the updated server is the selected server,
-  # assign it so the button is re-rendered with
-  # the correct status text.
-  socket =
-    if server.id == socket.assigns.selected_server.id do
-      assign(socket, selected_server: server)
-    else
-      socket
-    end
-
-  # Refetch the list of servers so the status indicators
-  # in the sidebar are updated:
-
-  servers = Servers.list_servers()
-  socket = assign(socket, servers: servers)
-
-  # Or find the matching server in the current list of
-  # servers, change it, and update the list of servers:
-
-  socket =
-    update(socket, :servers, fn servers ->
-      for s <- servers do
-        case s.id == server.id do
-          true -> server
-          _ -> s
-        end
+  # New function to handle a broadcast message indicating
+  # that a server has been updated.
+  def handle_info({:server_updated, server}, socket) do
+    # If the updated server is the selected server,
+    # assign it so the button is re-rendered with
+    # the correct status text.
+    socket =
+      if server.id == socket.assigns.selected_server.id do
+        assign(socket, selected_server: server)
+      else
+        socket
       end
-    end)
 
-  {:noreply, socket}
-end
+    # Refetch the list of servers so the status indicators
+    # in the sidebar are updated:
+
+    servers = Servers.list_servers()
+    socket = assign(socket, servers: servers)
+
+    # Or find the matching server in the current list of
+    # servers, change it, and update the list of servers:
+
+    socket =
+      update(socket, :servers, fn servers ->
+        for s <- servers do
+          case s.id == server.id do
+            true -> server
+            _ -> s
+          end
+        end
+      end)
+
+    {:noreply, socket}
+  end
 
   defp link_body(server) do
-
-
     assigns = %{name: server.name, status: server.status}
 
     ~L"""

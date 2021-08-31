@@ -20,26 +20,27 @@ defmodule Vbtfriends.Boats do
   def list_boats do
     Repo.all(Boat)
   end
- # [type: "sporting", prices: ["$", "$$"]]
 
- def list_boats(criteria) when is_list(criteria) do
-  query = from(b in Boat)
+  # [type: "sporting", prices: ["$", "$$"]]
 
-  Enum.reduce(criteria, query, fn
-    {:type, ""}, query ->
-      query
+  def list_boats(criteria) when is_list(criteria) do
+    query = from(b in Boat)
 
-    {:type, type}, query ->
-      from q in query, where: q.type == ^type
+    Enum.reduce(criteria, query, fn
+      {:type, ""}, query ->
+        query
 
-    {:prices, [""]}, query ->
-      query
+      {:type, type}, query ->
+        from q in query, where: q.type == ^type
 
-    {:prices, prices}, query ->
-      from q in query, where: q.price in ^prices
-  end)
-  |> Repo.all()
-end
+      {:prices, [""]}, query ->
+        query
+
+      {:prices, prices}, query ->
+        from q in query, where: q.price in ^prices
+    end)
+    |> Repo.all()
+  end
 
   @doc """
   Gets a single boat.

@@ -80,6 +80,7 @@ defmodule Vbtfriends.Volunteers do
   end
 
   def broadcast({:error, _reason} = error, _event), do: error
+
   @doc """
   Deletes a volunteer.
 

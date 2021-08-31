@@ -7,7 +7,12 @@ defmodule Vbtfriends.DonationsTest do
     alias Vbtfriends.Donations.Donation
 
     @valid_attrs %{days_until_expires: 42, emoji: "some emoji", item: "some item", quantity: 42}
-    @update_attrs %{days_until_expires: 43, emoji: "some updated emoji", item: "some updated item", quantity: 43}
+    @update_attrs %{
+      days_until_expires: 43,
+      emoji: "some updated emoji",
+      item: "some updated item",
+      quantity: 43
+    }
     @invalid_attrs %{days_until_expires: nil, emoji: nil, item: nil, quantity: nil}
 
     def donation_fixture(attrs \\ %{}) do

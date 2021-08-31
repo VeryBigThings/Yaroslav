@@ -41,14 +41,20 @@ defmodule Vbtfriends.PizzaOrdersTest do
 
     test "update_pizza_order/2 with valid data updates the pizza_order" do
       pizza_order = pizza_order_fixture()
-      assert {:ok, %PizzaOrder{} = pizza_order} = PizzaOrders.update_pizza_order(pizza_order, @update_attrs)
+
+      assert {:ok, %PizzaOrder{} = pizza_order} =
+               PizzaOrders.update_pizza_order(pizza_order, @update_attrs)
+
       assert pizza_order.pizza == "some updated pizza"
       assert pizza_order.username == "some updated username"
     end
 
     test "update_pizza_order/2 with invalid data returns error changeset" do
       pizza_order = pizza_order_fixture()
-      assert {:error, %Ecto.Changeset{}} = PizzaOrders.update_pizza_order(pizza_order, @invalid_attrs)
+
+      assert {:error, %Ecto.Changeset{}} =
+               PizzaOrders.update_pizza_order(pizza_order, @invalid_attrs)
+
       assert pizza_order == PizzaOrders.get_pizza_order!(pizza_order.id)
     end
 

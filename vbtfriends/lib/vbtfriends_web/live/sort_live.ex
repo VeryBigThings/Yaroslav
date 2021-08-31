@@ -8,10 +8,10 @@ defmodule VbtfriendsWeb.SortLive do
   end
 
   def handle_params(params, _url, socket) do
-    #page = String.to_integer(params["page"] || "1")
-    #per_page = String.to_integer(params["per_page"] || "5")
+    # page = String.to_integer(params["page"] || "1")
+    # per_page = String.to_integer(params["per_page"] || "5")
     page = param_to_integer(params["page"], 1)
-per_page = param_to_integer(params["per_page"], 5)
+    per_page = param_to_integer(params["per_page"], 5)
 
     sort_by = (params["sort_by"] || "id") |> String.to_atom()
     sort_order = (params["sort_order"] || "asc") |> String.to_atom()
@@ -100,6 +100,7 @@ per_page = param_to_integer(params["per_page"], 5)
   defp emoji(:desc), do: "👆"
 
   defp param_to_integer(nil, default_value), do: default_value
+
   defp param_to_integer(param, default_value) do
     case Integer.parse(param) do
       {number, _} ->

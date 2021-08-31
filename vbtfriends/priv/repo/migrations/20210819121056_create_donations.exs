@@ -10,6 +10,5 @@ defmodule Vbtfriends.Repo.Migrations.CreateDonations do
 
       timestamps()
     end
-
   end
 end

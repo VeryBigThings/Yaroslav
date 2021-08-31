@@ -19,8 +19,8 @@ defmodule VbtfriendsWeb.RefreshLive do
         new_orders: Sales.new_orders(),
         sales_amount: Sales.sales_amount(),
         expiration_time: expiration_time,
-        satisfaction: Sales.satisfaction(),
-       # time_remaining: time_remaining(expiration_time)
+        satisfaction: Sales.satisfaction()
+        # time_remaining: time_remaining(expiration_time)
       )
 
     {:ok, socket}
@@ -57,27 +57,27 @@ defmodule VbtfriendsWeb.RefreshLive do
         </div>
         <p class="m-4 font-semibold text-indigo-800">
 
-  </p>
+    </p>
       </div>
 
 
     </div>
     <div class="controls">
 
-  <form phx-change="select-refresh">
+    <form phx-change="select-refresh">
     <label for="refresh">
       Refresh every:
     </label>
     <select name="refresh">
       <%= options_for_select(refresh_options(), @refresh) %>
     </select>
-  </form>
+    </form>
 
-  <button phx-click="refresh">
+    <button phx-click="refresh">
     <img src="images/refresh.svg" class="h-10 object-contain">
 
-  </button>
-</div>
+    </button>
+    </div>
     """
   end
 
@@ -94,15 +94,17 @@ defmodule VbtfriendsWeb.RefreshLive do
 
   def handle_info(:tick, socket) do
     expiration_time = socket.assigns.expiration_time
+
     socket =
       assign(socket,
         new_orders: Sales.new_orders(),
         sales_amount: Sales.sales_amount(),
         expiration_time: expiration_time,
-        satisfaction: Sales.satisfaction(),
-       # time_remaining: time_remaining(expiration_time)
+        satisfaction: Sales.satisfaction()
+        # time_remaining: time_remaining(expiration_time)
       )
-      schedule_refresh(socket)
+
+    schedule_refresh(socket)
     {:noreply, socket}
   end
 
@@ -127,8 +129,8 @@ defmodule VbtfriendsWeb.RefreshLive do
   defp schedule_refresh(socket) do
     Process.send_after(self(), :tick, socket.assigns.refresh * 1000)
   end
-  defp refresh_options do
-    [{"1s", 1},{"2s", 2}, {"5s", 5}, {"15s", 15}, {"30s", 30}]
-  end
 
+  defp refresh_options do
+    [{"1s", 1}, {"2s", 2}, {"5s", 5}, {"15s", 15}, {"30s", 30}]
+  end
 end

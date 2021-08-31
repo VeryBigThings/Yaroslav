@@ -8,6 +8,5 @@ defmodule Vbtfriends.Repo.Migrations.CreatePizzaOrders do
 
       timestamps()
     end
-
   end
 end

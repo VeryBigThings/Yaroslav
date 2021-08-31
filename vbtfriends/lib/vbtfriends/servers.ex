@@ -8,7 +8,6 @@ defmodule Vbtfriends.Servers do
 
   alias Vbtfriends.Servers.Server
 
-
   def subscribe do
     Phoenix.PubSub.subscribe(Vbtfriends.PubSub, "servers")
   end
@@ -101,15 +100,15 @@ defmodule Vbtfriends.Servers do
   def get_server_by_name(name), do: Repo.get_by(Server, name: name)
 
   # New function that encapsulates broadcast details.
-defp broadcast({:ok, server}, event) do
-  Phoenix.PubSub.broadcast(
-    Vbtfriends.PubSub,
-    "servers",
-    {event, server}
-  )
+  defp broadcast({:ok, server}, event) do
+    Phoenix.PubSub.broadcast(
+      Vbtfriends.PubSub,
+      "servers",
+      {event, server}
+    )
 
-  {:ok, server}
-end
+    {:ok, server}
+  end
 
-defp broadcast({:error, _reason} = error, _event), do: error
+  defp broadcast({:error, _reason} = error, _event), do: error
 end

@@ -14,6 +14,5 @@ defmodule Vbtfriends.Repo.Migrations.CreateServers do
 
       timestamps()
     end
-
   end
 end

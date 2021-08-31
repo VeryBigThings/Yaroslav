@@ -4,7 +4,6 @@ defmodule VbtfriendsWeb.VolunteersLive do
   alias Vbtfriends.Volunteers
   alias Vbtfriends.Volunteers.Volunteer
 
-
   def mount(_params, _session, socket) do
     if connected?(socket), do: Volunteers.subscribe()
 
@@ -19,8 +18,6 @@ defmodule VbtfriendsWeb.VolunteersLive do
     {:ok, socket, temporary_assigns: [volunteers: []]}
   end
 
-
-
   def handle_info({:volunteer_created, volunteer}, socket) do
     socket =
       update(
@@ -29,10 +26,10 @@ defmodule VbtfriendsWeb.VolunteersLive do
         fn volunteers -> [volunteer | volunteers] end
       )
 
-      socket =
-        assign(socket,
-          recent_activity: "#{volunteer.name} checked in!"
-        )
+    socket =
+      assign(socket,
+        recent_activity: "#{volunteer.name} checked in!"
+      )
 
     {:noreply, socket}
   end
@@ -45,11 +42,11 @@ defmodule VbtfriendsWeb.VolunteersLive do
         fn volunteers -> [volunteer | volunteers] end
       )
 
-      socket =
-        assign(socket,
-          recent_activity: "#{volunteer.name} checked
+    socket =
+      assign(socket,
+        recent_activity: "#{volunteer.name} checked
             #{if volunteer.checked_out, do: "out", else: "in"}!"
-        )
+      )
 
     {:noreply, socket}
   end

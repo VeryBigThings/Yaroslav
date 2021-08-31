@@ -6,8 +6,18 @@ defmodule Vbtfriends.BoatsTest do
   describe "boats" do
     alias Vbtfriends.Boats.Boat
 
-    @valid_attrs %{image: "some image", model: "some model", price: "some price", type: "some type"}
-    @update_attrs %{image: "some updated image", model: "some updated model", price: "some updated price", type: "some updated type"}
+    @valid_attrs %{
+      image: "some image",
+      model: "some model",
+      price: "some price",
+      type: "some type"
+    }
+    @update_attrs %{
+      image: "some updated image",
+      model: "some updated model",
+      price: "some updated price",
+      type: "some updated type"
+    }
     @invalid_attrs %{image: nil, model: nil, price: nil, type: nil}
 
     def boat_fixture(attrs \\ %{}) do

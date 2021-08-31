@@ -10,6 +10,5 @@ defmodule Vbtfriends.Repo.Migrations.CreateBoats do
 
       timestamps()
     end
-
   end
 end

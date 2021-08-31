@@ -9,6 +9,5 @@ defmodule Vbtfriends.Repo.Migrations.CreateVolunteers do
 
       timestamps()
     end
-
   end
 end

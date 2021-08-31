@@ -20,6 +20,7 @@ defmodule Vbtfriends.PizzaOrders do
   def list_pizza_orders do
     Repo.all(PizzaOrder)
   end
+
   def list_pizza_orders(page: page, per_page: per_page) do
     query =
       from p in PizzaOrder,
@@ -29,6 +30,7 @@ defmodule Vbtfriends.PizzaOrders do
 
     Repo.all(query)
   end
+
   @doc """
   Gets a single pizza_order.
 

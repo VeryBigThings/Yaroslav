@@ -93,13 +93,13 @@ defmodule VbtfriendsWeb.SearchLive do
 
         {:noreply, socket}
 
-        stores ->
-          socket =
-            socket
-            |> clear_flash()
-            |> assign(stores: stores, loading: false)
+      stores ->
+        socket =
+          socket
+          |> clear_flash()
+          |> assign(stores: stores, loading: false)
 
-          {:noreply, socket}
+        {:noreply, socket}
     end
   end
 end

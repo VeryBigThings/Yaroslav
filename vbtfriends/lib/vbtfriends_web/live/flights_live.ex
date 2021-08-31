@@ -42,7 +42,7 @@ defmodule VbtfriendsWeb.FlightsLive do
     <%= for match <- @matches do %>
       <option value="<%= match %>"><%= match %></option>
     <% end %>
-  </datalist>
+    </datalist>
 
       <%= if @loading do %>
         <div class="loader">Loading...</div>

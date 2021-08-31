@@ -12,7 +12,6 @@ defmodule Vbtfriends.Servers.Server do
     field :size, :float
     field :status, :string, default: "down"
 
-
     timestamps()
   end
 

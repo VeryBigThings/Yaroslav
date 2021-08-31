@@ -275,7 +275,6 @@ for _i <- 1..100 do
   |> Repo.insert!()
 end
 
-
 pizza_toppings = [
   "🍗 Chicken",
   "🌿 Basil",

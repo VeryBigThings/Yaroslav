@@ -35,14 +35,15 @@ defmodule VbtfriendsWeb.VolunteerComponent do
         volunteer,
         %{checked_out: !volunteer.checked_out}
       )
-      volunteers = Volunteers.list_volunteers()
 
-      socket =
-        assign(socket,
-          volunteers: volunteers
-        )
+    volunteers = Volunteers.list_volunteers()
 
-      :timer.sleep(500)
+    socket =
+      assign(socket,
+        volunteers: volunteers
+      )
+
+    :timer.sleep(500)
     {:noreply, socket}
   end
 end

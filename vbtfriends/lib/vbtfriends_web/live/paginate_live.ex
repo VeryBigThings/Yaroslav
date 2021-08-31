@@ -5,11 +5,12 @@ defmodule VbtfriendsWeb.PaginateLive do
 
   def mount(_params, _session, socket) do
     {:ok, socket, temporary_assigns: [donations: []]}
+
     {:ok,
-    assign(
-      socket,
-      total_donations: Donations.count_donations()
-    ), temporary_assigns: [donations: []]}
+     assign(
+       socket,
+       total_donations: Donations.count_donations()
+     ), temporary_assigns: [donations: []]}
   end
 
   def handle_params(params, _url, socket) do
