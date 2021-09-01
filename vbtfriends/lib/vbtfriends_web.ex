@@ -47,6 +47,8 @@ defmodule VbtfriendsWeb do
       use Phoenix.LiveView,
         layout: {VbtfriendsWeb.LayoutView, "live.html"}
 
+      import VbtfriendsWeb.LiveHelpers
+
       unquote(view_helpers())
     end
   end
