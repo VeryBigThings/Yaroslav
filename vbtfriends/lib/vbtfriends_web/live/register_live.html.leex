@@ -1,0 +1,27 @@
+<div class="auth">
+  <h1>Live Register</h1>
+  <%= f = form_for @changeset,
+            Routes.user_registration_path(@socket, :create),
+            phx_submit: "save",
+            phx_change: "validate",
+            phx_trigger_action: @trigger_submit %>
+    <%= label f, :email %>
+    <%= email_input f, :email, required: true,  phx_debounce: "2000" %>
+    <%= error_tag f, :email %>
+
+    <%= label f, :password %>
+    <%= password_input f, :password, required: true,
+                       value: input_value(f, :password),
+                       phx_debounce: "blur" %>
+    <%= error_tag f, :password %>
+
+    <div>
+      <%= submit "Register", phx_disable_with: "Registering..." %>
+    </div>
+  </form>
+
+  <p>
+    <%= link "Log in", to: Routes.user_session_path(@socket, :new) %> |
+    <%= link "Forgot your password?", to: Routes.user_reset_password_path(@socket, :new) %>
+  </p>
+</div>
