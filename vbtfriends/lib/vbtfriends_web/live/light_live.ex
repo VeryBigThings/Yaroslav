@@ -10,7 +10,7 @@ defmodule VbtfriendsWeb.LightLive do
     ~L"""
 
     <h2 class="text-6xl mb-8  font-bold text-center">Front Porch Light </h2>
-      <div id="light">
+      <div id="light" phx-window-keyup="update">
       <div class="meter">
         <span style="width: <%= @brightness %>%" class="bg-red-400 block">
           <%= @brightness %>%
@@ -31,6 +31,8 @@ defmodule VbtfriendsWeb.LightLive do
     <button phx-click="on"><img src="/images/light-on.svg"  alt="" class="h-8 object-contain">
 
     </button>
+
+
 
 
 
@@ -58,4 +60,15 @@ defmodule VbtfriendsWeb.LightLive do
     socket = update(socket, :brightness, &(&1 - 10))
     {:noreply, socket}
   end
+
+  def handle_event("update", %{"key" => "ArrowUp"}, socket) do
+    {:noreply, update(socket, :brightness, &min(&1 + 10, 100))}
+  end
+
+  def handle_event("update", %{"key" => "ArrowDown"}, socket) do
+    {:noreply, update(socket, :brightness, &max(&1 - 10, 0))}
+  end
+
+  # Default function clause as a catch-all for other keys.
+  def handle_event("update", _, socket), do: {:noreply, socket}
 end

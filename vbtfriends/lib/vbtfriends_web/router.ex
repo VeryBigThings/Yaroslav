@@ -41,6 +41,7 @@ defmodule VbtfriendsWeb.Router do
     live("/infinite-scroll", InfiniteScrollLive)
     live("/sandbox", SandboxLive)
     live("/chart", ChartLive)
+    live("/key-events", KeyEventsLive)
   end
 
   # Other scopes may use custom stacks.
