@@ -42,6 +42,7 @@ defmodule VbtfriendsWeb.Router do
     live("/sandbox", SandboxLive)
     live("/chart", ChartLive)
     live("/key-events", KeyEventsLive)
+    live("/modal", ModalLive)
   end
 
   # Other scopes may use custom stacks.
