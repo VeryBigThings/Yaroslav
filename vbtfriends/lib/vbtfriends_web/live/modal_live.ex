@@ -21,6 +21,7 @@ defmodule VbtfriendsWeb.ModalLive do
          <div class="phx-modal-content">
           <a href="#" class="phx-modal-close" phx-click="toggle-modal">&times</a>
 
+
         <div class="creatures mt-20">
           <p >Some text</p>
           <button  phx-click="toggle-modal"  class="p-4 mx-auto block mt-8">close</button>
